@@ -15,6 +15,10 @@
     - [Extension](#extension)
         - [括弧の対応関係を色分けしてくれる](#括弧の対応関係を色分けしてくれる)
         - [Markdownで目次をつくる](#markdownで目次をつくる)
+- [Git](#git)
+    - [初期設定まわり](#初期設定まわり)
+        - [リモートリポジトリの登録](#リモートリポジトリの登録)
+        - [公開鍵の登録](#公開鍵の登録)
 
 <!-- /TOC -->
 
@@ -76,3 +80,26 @@ end
 <a id="markdown-markdownで目次をつくる" name="markdownで目次をつくる"></a>
 ### Markdownで目次をつくる
 [Markdown TOC](https://marketplace.visualstudio.com/items?itemName=AlanWalk.markdown-toc)
+
+<a id="markdown-git" name="git"></a>
+# Git
+<a id="markdown-初期設定まわり" name="初期設定まわり"></a>
+## 初期設定まわり
+<a id="markdown-リモートリポジトリの登録" name="リモートリポジトリの登録"></a>
+### リモートリポジトリの登録
+
+```bash
+git remote set-url origin リポジトリ名
+```
+<a id="markdown-公開鍵の登録" name="公開鍵の登録"></a>
+### 公開鍵の登録
+
+1.key生成とクリップボードに貼り付け
+
+```bash
+ssh-keygen -t rsa -b 4096 -C "メールアドレス"
+
+clip < ~/.ssh/id_rsa.pub
+```
+2. keyの貼り付け。公開鍵名は任意でOK
+https://github.com/settings/keys
