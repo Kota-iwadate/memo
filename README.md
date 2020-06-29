@@ -3,6 +3,11 @@
 <!-- TOC -->
 
 - [Elixir](#elixir)
+    - [基本](#基本)
+        - [算術](#算術)
+            - [割り算](#割り算)
+    - [Enum](#enum)
+        - [Enumデータで特定の条件が該当する要素を含むか、全ての要素が条件を満たすか判定したい。](#enumデータで特定の条件が該当する要素を含むか全ての要素が条件を満たすか判定したい)
     - [String](#string)
         - [一文字ずつsplitしたいとき](#一文字ずつsplitしたいとき)
     - [その他](#その他)
@@ -15,6 +20,7 @@
     - [Extension](#extension)
         - [括弧の対応関係を色分けしてくれる](#括弧の対応関係を色分けしてくれる)
         - [Markdownで目次をつくる](#markdownで目次をつくる)
+        - [Git History](#git-history)
 - [Git](#git)
     - [初期設定まわり](#初期設定まわり)
         - [リモートリポジトリの登録](#リモートリポジトリの登録)
@@ -25,6 +31,36 @@
 
 <a id="markdown-elixir" name="elixir"></a>
 # Elixir
+<a id="markdown-基本" name="基本"></a>
+## 基本
+<a id="markdown-算術" name="算術"></a>
+### 算術
+<a id="markdown-割り算" name="割り算"></a>
+#### 割り算
+elixirでの割り算は`/`,ただし`/`は常に浮動小数を返す。整数同士で割り算したい場合は`div`を使う。
+```bash
+iex(4)> 12 / 6   
+2.0
+iex(5)> div(12, 6)
+2
+```
+
+<a id="markdown-enum" name="enum"></a>
+## Enum
+<a id="markdown-enumデータで特定の条件が該当する要素を含むか全ての要素が条件を満たすか判定したい" name="enumデータで特定の条件が該当する要素を含むか全ての要素が条件を満たすか判定したい"></a>
+### Enumデータで特定の条件が該当する要素を含むか、全ての要素が条件を満たすか判定したい。
+`fn(x)`で書いたものと`&`記法を残す
+
+```bash
+iex(9)> Enum.all?([1,2,3], fn(x) -> rem(x,2) == 0 end) 
+false
+iex(10)> Enum.any?([1,2,3], fn(x) -> rem(x,2) == 0 end) 
+true
+iex(11)> Enum.all?([1,2,3], &rem(&1,2) == 0)   
+false
+iex(12)> Enum.any?([1,2,3], &rem(&1,2) == 0)
+true
+```
 <a id="markdown-string" name="string"></a>
 ## String
 <a id="markdown-一文字ずつsplitしたいとき" name="一文字ずつsplitしたいとき"></a>
@@ -80,6 +116,9 @@ end
 <a id="markdown-markdownで目次をつくる" name="markdownで目次をつくる"></a>
 ### Markdownで目次をつくる
 [Markdown TOC](https://marketplace.visualstudio.com/items?itemName=AlanWalk.markdown-toc)
+<a id="markdown-git-history" name="git-history"></a>
+### Git History
+[Git history](https://marketplace.visualstudio.com/items?itemName=donjayamanne.githistory)
 
 <a id="markdown-git" name="git"></a>
 # Git
