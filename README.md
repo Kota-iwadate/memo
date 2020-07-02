@@ -11,6 +11,10 @@
         - [Elixirでの内包表記](#elixirでの内包表記)
     - [String](#string)
         - [一文字ずつsplitしたいとき](#一文字ずつsplitしたいとき)
+    - [ドキュメント](#ドキュメント)
+        - [コメント](#コメント)
+            - [インラインドキュメント](#インラインドキュメント)
+            - [関数のドキュメント](#関数のドキュメント)
     - [その他](#その他)
         - [競技プログラミング](#競技プログラミング)
             - [Atcoder](#atcoder)
@@ -121,6 +125,46 @@ iex(1)> String.codepoints("hogehoge")
 ["h", "o", "g", "e", "h", "o", "g", "e"]
 ```
 https://hexdocs.pm/elixir/String.html#codepoints/1
+
+<a id="markdown-ドキュメント" name="ドキュメント"></a>
+## ドキュメント
+<a id="markdown-コメント" name="コメント"></a>
+### コメント
+<a id="markdown-インラインドキュメント" name="インラインドキュメント"></a>
+#### インラインドキュメント
+最も使う頻度が高いであろうインラインコメントの書き方
+```elixir
+  # aとbの積が偶数か奇数か判定する
+  def product_number(a, b) do
+    case rem(a * b, 2) do
+      1 ->
+        "Odd"
+      0 ->
+        "Even"
+
+    end
+  end
+```
+<a id="markdown-関数のドキュメント" name="関数のドキュメント"></a>
+#### 関数のドキュメント
+関数にドキュメントをつけたいとき
+```elixir
+  @doc"""
+  aとbの積が偶数か奇数か判定する
+  ## param
+  - a: 正の整数
+  - b: 正の整数
+  """
+  def product_number(a, b) do
+    case rem(a * b, 2) do
+      1 ->
+        "Odd"
+      0 ->
+        "Even"
+
+    end
+  end
+```
 
 <a id="markdown-その他" name="その他"></a>
 ## その他
