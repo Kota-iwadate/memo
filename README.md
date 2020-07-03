@@ -9,6 +9,8 @@
     - [Enum](#enum)
         - [Enumデータで特定の条件が該当する要素を含むか、全ての要素が条件を満たすか判定したい。](#enumデータで特定の条件が該当する要素を含むか全ての要素が条件を満たすか判定したい)
         - [Elixirでの内包表記](#elixirでの内包表記)
+    - [Integer](#integer)
+        - [数字を桁毎に分割してリスト化したい](#数字を桁毎に分割してリスト化したい)
     - [String](#string)
         - [一文字ずつsplitしたいとき](#一文字ずつsplitしたいとき)
     - [ドキュメント](#ドキュメント)
@@ -113,7 +115,21 @@ iex(11)> for x <- [1,2], y<- [3,4,5], rem(x,2) == 0, rem(y,2) == 0, do:  {x,y}
 iex(15)> for x <- [1,2], y<- [3,4,5], rem(x,2)==0, rem(y,2)==0, into: %{}, do:  {x, y} 
 %{2 => 4}
 ```
+<a id="markdown-integer" name="integer"></a>
+## Integer
+<a id="markdown-数字を桁毎に分割してリスト化したい" name="数字を桁毎に分割してリスト化したい"></a>
+### 数字を桁毎に分割してリスト化したい
 
+`Integer.digits`
+```bash
+iex(3)> Integer.digits(18)
+[1, 8]
+iex(4)> Integer.digits(18,2) 
+[1, 0, 0, 1, 0]
+iex(5)> Integer.digits(18,8) 
+[2, 2]
+iex(6)> 
+```
 <a id="markdown-string" name="string"></a>
 ## String
 <a id="markdown-一文字ずつsplitしたいとき" name="一文字ずつsplitしたいとき"></a>
