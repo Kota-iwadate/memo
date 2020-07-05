@@ -297,5 +297,7 @@ https://github.com/settings/keys
 
 ```bash
 git reset --soft HEAD^
+git reset --hard HEAD^
 ```
-`--soft`指定すれば。コミットのみ取り消し。ファイルの変更はそのまま
+`--soft`指定すればコミットのみ取り消し。ワーキングディレクトリの変更はそのまま
+`--hard`指定すればコミットの取り消しとワーキングディレクトリの内容の直前のコミットの状態に戻る。
