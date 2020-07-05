@@ -20,6 +20,9 @@
     - [その他](#その他)
         - [競技プログラミング](#競技プログラミング)
             - [Atcoder](#atcoder)
+                - [標準入力テンプレ](#標準入力テンプレ)
+                    - [入力パタン1](#入力パタン1)
+                - [入力パタン2](#入力パタン2)
 - [Visual Studio Code](#visual-studio-code)
     - [ショートカットキー](#ショートカットキー)
         - [コマンドパレットを出したいとき](#コマンドパレットを出したいとき)
@@ -32,6 +35,8 @@
     - [初期設定まわり](#初期設定まわり)
         - [リモートリポジトリの登録](#リモートリポジトリの登録)
         - [公開鍵の登録](#公開鍵の登録)
+        - [日々の運用あれこれ](#日々の運用あれこれ)
+            - [直前のコミットを取り消したい](#直前のコミットを取り消したい)
 
 <!-- /TOC -->
 
@@ -188,9 +193,15 @@ https://hexdocs.pm/elixir/String.html#codepoints/1
 ### 競技プログラミング
 <a id="markdown-atcoder" name="atcoder"></a>
 #### Atcoder
-提出用のテンプレ。標準入力・標準出力まわりの書き方をよく忘れてしまうのでメモしておく
+<a id="markdown-標準入力テンプレ" name="標準入力テンプレ"></a>
+##### 標準入力テンプレ
+<a id="markdown-入力パタン1" name="入力パタン1"></a>
+###### 入力パタン1
+$N_1 N_2... N_m$
+
 ソースは下記の問題を解いたときのもの
 [ABC081A - Placing Marble](https://atcoder.jp/contests/abs/tasks/abc081_a)
+
 ```elixir
 defmodule Main do
   def placing_marble(seq) do
@@ -204,6 +215,33 @@ defmodule Main do
     IO.puts placing_marble(seq)
   end
 
+end
+```
+<a id="markdown-入力パタン2" name="入力パタン2"></a>
+##### 入力パタン2
+$N\\
+d_1\\
+d_2\\
+.\\
+.\\
+d_m$
+
+ソースは下記の問題を解いたときのもの
+[ABC085B - Kagami Mochi](https://atcoder.jp/contests/abs/tasks/abc085_b)
+
+```elixir
+defmodule Main do
+  def kagamimochi(mochi_list) do
+    Enum.uniq(mochi_list)
+    |> length
+  end
+
+ def main do
+    n = IO.gets("") |> String.trim |> String.to_integer
+    mochi_list = 1..n
+                |> Enum.map(fn _ -> IO.read(:line) |> String.trim() |> String.to_integer() end)
+    IO.puts mochi_list
+ end
 end
 ```
 
@@ -251,3 +289,13 @@ clip < ~/.ssh/id_rsa.pub
 ```
 2. keyの貼り付け。公開鍵名は任意でOK
 https://github.com/settings/keys
+
+<a id="markdown-日々の運用あれこれ" name="日々の運用あれこれ"></a>
+### 日々の運用あれこれ
+<a id="markdown-直前のコミットを取り消したい" name="直前のコミットを取り消したい"></a>
+#### 直前のコミットを取り消したい
+
+```bash
+git reset --soft HEAD^
+```
+`--soft`指定すれば。コミットのみ取り消し。ファイルの変更はそのまま
