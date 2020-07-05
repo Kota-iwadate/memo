@@ -22,7 +22,7 @@
             - [Atcoder](#atcoder)
                 - [標準入力テンプレ](#標準入力テンプレ)
                     - [入力パタン1](#入力パタン1)
-                - [入力パタン2](#入力パタン2)
+                    - [入力パタン2](#入力パタン2)
 - [Visual Studio Code](#visual-studio-code)
     - [ショートカットキー](#ショートカットキー)
         - [コマンドパレットを出したいとき](#コマンドパレットを出したいとき)
@@ -197,7 +197,7 @@ https://hexdocs.pm/elixir/String.html#codepoints/1
 ##### 標準入力テンプレ
 <a id="markdown-入力パタン1" name="入力パタン1"></a>
 ###### 入力パタン1
-$N_1 N_2... N_m$
+*N<sub>1</sub> N<sub>2</sub>... N<sub>m</sub>*
 
 ソースは下記の問題を解いたときのもの
 [ABC081A - Placing Marble](https://atcoder.jp/contests/abs/tasks/abc081_a)
@@ -218,13 +218,13 @@ defmodule Main do
 end
 ```
 <a id="markdown-入力パタン2" name="入力パタン2"></a>
-##### 入力パタン2
-$N\\
-d_1\\
-d_2\\
-.\\
-.\\
-d_m$
+###### 入力パタン2
+*N*\
+*d<sub>1</sub>*\
+*d<sub>2</sub>*\
+.\
+.\
+*d<sub>n</sub>*
 
 ソースは下記の問題を解いたときのもの
 [ABC085B - Kagami Mochi](https://atcoder.jp/contests/abs/tasks/abc085_b)
@@ -300,4 +300,5 @@ git reset --soft HEAD^
 git reset --hard HEAD^
 ```
 `--soft`指定すればコミットのみ取り消し。ワーキングディレクトリの変更はそのまま
+
 `--hard`指定すればコミットの取り消しとワーキングディレクトリの内容の直前のコミットの状態に戻る。
