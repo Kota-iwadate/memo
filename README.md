@@ -11,6 +11,7 @@
         - [Elixirでの内包表記](#elixirでの内包表記)
     - [Integer](#integer)
         - [数字を桁毎に分割してリスト化したい](#数字を桁毎に分割してリスト化したい)
+        - [特定の要素を取り出したい。](#特定の要素を取り出したい)
     - [String](#string)
         - [一文字ずつsplitしたいとき](#一文字ずつsplitしたいとき)
     - [ドキュメント](#ドキュメント)
@@ -135,6 +136,23 @@ iex(5)> Integer.digits(18,8)
 [2, 2]
 iex(6)> 
 ```
+<a id="markdown-特定の要素を取り出したい" name="特定の要素を取り出したい"></a>
+### 特定の要素を取り出したい。
+`Enum.at(list, num)`,`Enum.take(list, num)`があるが、返り値が異なるので注意。一瞬はまったのでメモ
+
+```bash
+iex(1)> list = [1,2,3,4,5]
+[1, 2, 3, 4, 5]
+iex(2)> Enum.at(list,2)
+3
+iex(3)> Enum.take(list,2)
+[1, 2]
+```
+`take`が返すのはlistだが、`at`が返すのは、1つの要素
+
+https://hexdocs.pm/elixir/Enum.html#take/2
+https://hexdocs.pm/elixir/Enum.html#at/3
+
 <a id="markdown-string" name="string"></a>
 ## String
 <a id="markdown-一文字ずつsplitしたいとき" name="一文字ずつsplitしたいとき"></a>
