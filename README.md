@@ -31,6 +31,7 @@
     - [Extension](#extension)
         - [括弧の対応関係を色分けしてくれる](#括弧の対応関係を色分けしてくれる)
         - [Markdownで目次をつくる](#markdownで目次をつくる)
+        - [ソースコードのスクショをいい感じにとる](#ソースコードのスクショをいい感じにとる)
         - [Git History](#git-history)
 - [Git](#git)
     - [初期設定まわり](#初期設定まわり)
@@ -283,6 +284,9 @@ end
 <a id="markdown-markdownで目次をつくる" name="markdownで目次をつくる"></a>
 ### Markdownで目次をつくる
 [Markdown TOC](https://marketplace.visualstudio.com/items?itemName=AlanWalk.markdown-toc)
+<a id="markdown-ソースコードのスクショをいい感じにとる" name="ソースコードのスクショをいい感じにとる"></a>
+### ソースコードのスクショをいい感じにとる
+[Polacode](https://marketplace.visualstudio.com/items?itemName=pnp.polacode)
 <a id="markdown-git-history" name="git-history"></a>
 ### Git History
 [Git history](https://marketplace.visualstudio.com/items?itemName=donjayamanne.githistory)
