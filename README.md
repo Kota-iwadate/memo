@@ -39,6 +39,12 @@
         - [公開鍵の登録](#公開鍵の登録)
         - [日々の運用あれこれ](#日々の運用あれこれ)
             - [直前のコミットを取り消したい](#直前のコミットを取り消したい)
+- [Docker](#docker)
+    - [コンテナ実行](#コンテナ実行)
+    - [イメージ一覧](#イメージ一覧)
+    - [タグ付け](#タグ付け)
+    - [Docker hub ログイン](#docker-hub-ログイン)
+    - [イメージのpush](#イメージのpush)
 - [コマンド集](#コマンド集)
     - [解凍](#解凍)
 
@@ -326,6 +332,53 @@ git reset --hard HEAD^
 `--soft`指定すればコミットのみ取り消し。ワーキングディレクトリの変更はそのまま
 
 `--hard`指定すればコミットの取り消しとワーキングディレクトリの内容の直前のコミットの状態に戻る。
+
+<a id="markdown-docker" name="docker"></a>
+# Docker
+
+<a id="markdown-コンテナ実行" name="コンテナ実行"></a>
+## コンテナ実行
+
+```bash
+docker run hello-world:[tag Name]
+```
+<a id="markdown-イメージ一覧" name="イメージ一覧"></a>
+## イメージ一覧
+
+```bash
+docker images
+```
+<a id="markdown-タグ付け" name="タグ付け"></a>
+## タグ付け
+
+```bash
+docker tag [image Name] [Tag Name]
+```
+ex.
+```bash
+docker tag docker-whale dateshi/docker-whale:ver1
+docker images
+REPOSITORY             TAG                 IMAGE ID            CREATED             SIZE
+dateshi/docker-whale   ver1                933ed6e4be88        19 minutes ago      278MB
+docker-whale           latest              933ed6e4be88        19 minutes ago      278MB
+<none>                 <none>              01655acc7fa7        26 minutes ago      278MB
+hello-world            latest              bf756fb1ae65        6 months ago        13.3kB
+docker/whalesay        latest              6b362a9f73eb        5 years ago         247MB
+```
+
+<a id="markdown-docker-hub-ログイン" name="docker-hub-ログイン"></a>
+## Docker hub ログイン
+
+```bash
+docker login
+```
+
+<a id="markdown-イメージのpush" name="イメージのpush"></a>
+## イメージのpush
+
+```bash
+docker push dateshi/docker-whale
+```
 
 <a id="markdown-コマンド集" name="コマンド集"></a>
 # コマンド集
