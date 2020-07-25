@@ -39,12 +39,18 @@
         - [公開鍵の登録](#公開鍵の登録)
         - [日々の運用あれこれ](#日々の運用あれこれ)
             - [直前のコミットを取り消したい](#直前のコミットを取り消したい)
-- [Docker](#docker)
+- [Docker[1]](#docker1)
     - [コンテナ実行](#コンテナ実行)
+        - [通常実行](#通常実行)
+        - [コンテナ停止後、削除までやりたい場合](#コンテナ停止後削除までやりたい場合)
+        - [実行&ホストのファイルをコンテナから認識できるようにする。](#実行ホストのファイルをコンテナから認識できるようにする)
     - [イメージ一覧](#イメージ一覧)
     - [タグ付け](#タグ付け)
     - [Docker hub ログイン](#docker-hub-ログイン)
     - [イメージのpush](#イメージのpush)
+    - [ホストとコンテナでファイルコピーを行いたい。(起動中のnginファイルのコピーをしたい場合)](#ホストとコンテナでファイルコピーを行いたい起動中のnginファイルのコピーをしたい場合)
+        - [コンテナ->ホスト](#コンテナ-ホスト)
+        - [ホスト-> コンテナ](#ホスト--コンテナ)
 - [コマンド集](#コマンド集)
     - [解凍](#解凍)
 
@@ -333,15 +339,36 @@ git reset --hard HEAD^
 
 `--hard`指定すればコミットの取り消しとワーキングディレクトリの内容の直前のコミットの状態に戻る。
 
-<a id="markdown-docker" name="docker"></a>
-# Docker
+<a id="markdown-docker1" name="docker1"></a>
+# Docker[1]
 
 <a id="markdown-コンテナ実行" name="コンテナ実行"></a>
 ## コンテナ実行
 
+<a id="markdown-通常実行" name="通常実行"></a>
+### 通常実行
 ```bash
 docker run hello-world:[tag Name]
 ```
+<a id="markdown-コンテナ停止後削除までやりたい場合" name="コンテナ停止後削除までやりたい場合"></a>
+### コンテナ停止後、削除までやりたい場合
+
+```bash
+docker run --name tmp --rm -d [image]
+ex.
+docker run --name tmp --rm -d nginx
+```
+`d`はデタッチモードで、バックグラウンドで動作させる場合指定する
+
+<a id="markdown-実行ホストのファイルをコンテナから認識できるようにする" name="実行ホストのファイルをコンテナから認識できるようにする"></a>
+### 実行&ホストのファイルをコンテナから認識できるようにする。
+
+```bash
+ docker run --name first-nginx -v /c/Users/[ host Dir path]:[cpntainer Dir path]:ro -d -p [Port1]:[Port2] image名
+ ex.
+ docker run --name first-nginx -v /c/Users/Owner/Desktop/Docker/html:/usr/share/nginx/html:ro -d -p 8080:80 nginx
+```
+
 <a id="markdown-イメージ一覧" name="イメージ一覧"></a>
 ## イメージ一覧
 
@@ -379,6 +406,24 @@ docker login
 ```bash
 docker push dateshi/docker-whale
 ```
+<a id="markdown-ホストとコンテナでファイルコピーを行いたい起動中のnginファイルのコピーをしたい場合" name="ホストとコンテナでファイルコピーを行いたい起動中のnginファイルのコピーをしたい場合"></a>
+## ホストとコンテナでファイルコピーを行いたい。(起動中のnginファイルのコピーをしたい場合)
+
+<a id="markdown-コンテナ-ホスト" name="コンテナ-ホスト"></a>
+### コンテナ->ホスト
+```bash
+docker cp コンテナ名 or ID:コンテナ上のコピーしたいファイルのパス ホスト上のコピー先パス
+ex.
+docker cp tmp-nginx:/etc/nginx/conf.d/default.conf ./
+```
+<a id="markdown-ホスト--コンテナ" name="ホスト--コンテナ"></a>
+### ホスト-> コンテナ
+```bash
+docker cp  ホスト上のコピーしたいファイルのパス コンテナ名:コンテナ上のコピー先パス
+ex.
+docker cp ./Dockerfile test:/etc/nginx/conf.d/default.conf
+```
+
 
 <a id="markdown-コマンド集" name="コマンド集"></a>
 # コマンド集
@@ -387,3 +432,6 @@ docker push dateshi/docker-whale
 ```bash
 tar -zxvf xxxx.tar.gz
 ```
+
+参考:
+[1]:ゼロからはじめるDockerによるアプリケーション実行環境構築(udemy講座)
