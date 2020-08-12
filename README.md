@@ -8,6 +8,9 @@
             - [割り算](#割り算)
     - [Enum](#enum)
         - [Enumデータで特定の条件が該当する要素を含むか、全ての要素が条件を満たすか判定したい。](#enumデータで特定の条件が該当する要素を含むか全ての要素が条件を満たすか判定したい)
+        - [reduce処理のサンプル](#reduce処理のサンプル)
+            - [条件を満たすまで畳み込みを継続](#条件を満たすまで畳み込みを継続)
+                - [1 [ABC086C - Traveling](https://atcoder.jp/contests/abs/tasks/arc089_a)](#1-abc086c---travelinghttpsatcoderjpcontestsabstasksarc089_a)
         - [Elixirでの内包表記](#elixirでの内包表記)
     - [Integer](#integer)
         - [数字を桁毎に分割してリスト化したい](#数字を桁毎に分割してリスト化したい)
@@ -53,6 +56,7 @@
         - [ホスト-> コンテナ](#ホスト--コンテナ)
 - [コマンド集](#コマンド集)
     - [解凍](#解凍)
+    - [インストール(ubuntu)](#インストールubuntu)
 
 <!-- /TOC -->
 
@@ -88,6 +92,24 @@ iex(11)> Enum.all?([1,2,3], &rem(&1,2) == 0)
 false
 iex(12)> Enum.any?([1,2,3], &rem(&1,2) == 0)
 true
+```
+<a id="markdown-reduce処理のサンプル" name="reduce処理のサンプル"></a>
+### reduce処理のサンプル
+<a id="markdown-条件を満たすまで畳み込みを継続" name="条件を満たすまで畳み込みを継続"></a>
+#### 条件を満たすまで畳み込みを継続
+`reduce_while`をつかってかける.
+https://hexdocs.pm/elixir/Enum.html#reduce_while/3
+<a id="markdown-1-abc086c---travelinghttpsatcoderjpcontestsabstasksarc089_a" name="1-abc086c---travelinghttpsatcoderjpcontestsabstasksarc089_a"></a>
+##### 1 [ABC086C - Traveling](https://atcoder.jp/contests/abs/tasks/arc089_a)
+```elixir
+  def traveling(points) do
+    res = Enum.reduce_while(points, [0,0,0], fn list, acc ->
+    if reachable(list,acc), do: {:cont,list}, else: {:halt, acc} end)
+    cond do
+      res == Enum.at(points,Enum.count(points)-1) -> "Yes"
+      true -> "No"
+    end
+  end
 ```
 <a id="markdown-elixirでの内包表記" name="elixirでの内包表記"></a>
 ### Elixirでの内包表記
@@ -431,6 +453,12 @@ docker cp ./Dockerfile test:/etc/nginx/conf.d/default.conf
 ## 解凍
 ```bash
 tar -zxvf xxxx.tar.gz
+```
+<a id="markdown-インストールubuntu" name="インストールubuntu"></a>
+## インストール(ubuntu)
+```bash
+# pythin3.8の場合
+ apt update; apt install -y python3.8
 ```
 
 参考:
